@@ -1,18 +1,11 @@
 #include <stdio.h>
 int main() {
-    int i, j, a, b, c=0;
-    scanf("%d %d", &b, &a);
+    int i, a, t, min=100, max=0;
+    scanf("%d", &a);
     for(i=0;i<a;i++) {
-        for(j=0;j<b;j++) {
-            if((i==0||i==a-1)&&(j==0||j==b-1))
-                printf("+");
-            else if(i==0||i==a-1)
-                printf("-");
-            else if(j==0||j==b-1)
-                printf("|");
-            else
-                printf(" ");
-        }
-        printf("\n");
+        scanf("%d", &t);
+        if(min>t) min=t;
+        else if(max<t) max=t;
     }
+    printf("%d %d", min, max);
 }
