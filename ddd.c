@@ -1,11 +1,13 @@
 #include <stdio.h>
 int main() {
-    int i, a, t, min=100, max=0;
+    int a, i, j, max = 0;
     scanf("%d", &a);
-    for(i=0;i<a;i++) {
-        scanf("%d", &t);
-        if(min>t) min=t;
-        else if(max<t) max=t;
+    for(i=1;i*2<a;i++) {
+        if(max<i*(a-i*2)) max=i*(a-i*2);
     }
-    printf("%d %d", min, max);
+    for(i=1;i*2<a;i++)
+        if(max==i*(a-i*2)) {
+            printf("%d", i);
+            break;
+        }
 }
