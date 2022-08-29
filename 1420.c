@@ -4,23 +4,24 @@
 int main() {
     int a, i, j, temp;
     scanf("%d", &a);
-    char name[a][10], ntemp[10];
-    int score[a];
+    char name[a][10];
+    int score[a][2];
     for(i=0;i<a;i++) {
-        scanf("%s %d", &name[i], &score[i]);
+        scanf("%s %d", &name[i], &score[i][0]);
+        score[i][1]=&name[i];
     }
     for(i=0;i<a;i++) {
-        for(j=0;j>a;j++) {
+        for(j=0;j<a;j++) {
             if(score[i]<score[j]) {
-                temp=score[i];
-                strcpy(ntemp, name[i]);
-                score[i]=score[j];
-                strcpy(name[i],name[j]);
-                score[j]=temp;
-                strcpy(name[j],ntemp);
+                temp=score[i][0];
+                score[i][0]=score[j][0];
+                score[j][0]=temp;
+                temp=score[i][1];
+                score[i][1]=score[j][1];
+                score[j][1]=temp;
             }
         }
     }
-    printf("%s", name[2]);
+    printf("%s", name[2][1]);
     system("pause");
 }
