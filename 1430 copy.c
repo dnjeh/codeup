@@ -12,10 +12,7 @@ int main() {
     bool d[c];
     for(i=0;i<c;i++) {
         scanf("%d", &t);
-        d[i]=a[t];
-    }
-    for(i=0;i<c;i++) {
-        printf("%d ", d[i]);
+        printf("%d ", a[t]);
     }
     return 0;
 }
