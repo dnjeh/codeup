@@ -1,26 +1,24 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 int main() {
-    int a, i, j, temp;
+    int a, t, i, j;
     scanf("%d", &a);
-    char name[a][10], ntemp[10];
-    int score[a];
+    char names[a][10];
+    int scores[a][2];
     for(i=0;i<a;i++) {
-        scanf("%s %d", &name[i], &score[i]);
+        scanf("%s %d", &names[i], &scores[i][0]);
+        scores[i][1]=i;
     }
     for(i=0;i<a;i++) {
-        for(j=0;j>a;j++) {
-            if(score[i]<score[j]) {
-                temp=score[i];
-                strcpy(ntemp, name[i]);
-                score[i]=score[j];
-                strcpy(name[i],name[j]);
-                score[j]=temp;
-                strcpy(name[j],ntemp);
+        for(j=0;j<a;j++) {
+            if(scores[i][0]>scores[j][0]) {
+                t=scores[i][0];
+                scores[i][0]=scores[j][0];
+                scores[j][0]=t;
+                t=scores[i][1];
+                scores[i][1]=scores[j][1];
+                scores[j][1]=t;
             }
         }
     }
-    printf("%s", name[2]);
-    system("pause");
+    printf("%s", names[scores[2][1]]);
 }
