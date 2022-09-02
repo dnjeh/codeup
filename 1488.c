@@ -1,8 +1,9 @@
 #include <stdio.h>
 int main() {
-    int x=0, y=0, a, b, i, j, t=1, face=0; 
+    int a, b, i, j, t=1, face=2; 
     scanf("%d %d", &a, &b);
     int c[a][b];
+    int x=b-1, y=a-1;
     for(i=0;i<a;i++) {
         for(j=0;j<b;j++) {
             c[i][j]=0;

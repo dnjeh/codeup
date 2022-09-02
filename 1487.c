@@ -1,15 +1,16 @@
 #include <stdio.h>
 int main() {
-    int x=0, y=0, a, b, i, j, t=1, face=0; 
+    int a, b, i, j, face=1; 
     scanf("%d %d", &a, &b);
     int c[a][b];
+    int x=b-1, y=0, t=a*b;
     for(i=0;i<a;i++) {
         for(j=0;j<b;j++) {
             c[i][j]=0;
         }
     }
-    for(i=0;a*b>=t;i++) {
-        c[y][x]=t++;
+    for(i=0;t>=1;i++) {
+        c[y][x]=t--;
         switch(face%4) {
             case 0:
                 if(x+1==b||c[y][x+1]!=0) {
