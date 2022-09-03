@@ -2,7 +2,7 @@
 int main() {
     int a, b, d, i, j, i1, j1, sum, t[5];
     scanf("%d %d %d", &a, &b, &d);
-    int c[a][b];
+    int c[a][b], e[a][b];
     for(i=0;i<a;i++) {
         for(j=0;j<b;j++) {
             c[i][j]=0;
@@ -16,9 +16,12 @@ int main() {
             scanf("%d", &t[j]);
         }
         c[t[0]][t[1]]+=t[4];
-        c[t[2]+1][t[3]+1]+=t[4];
-        c[t[0]][t[3]+1]-=t[4];
-        c[t[2]+1][t[1]]-=t[4];
+        if(t[2]+1<a&&t[3]+1<b)
+            c[t[2]+1][t[3]+1]+=t[4];
+        if(t[3]+1<b)
+            c[t[0]][t[3]+1]-=t[4];
+        if(t[2]+1<b)
+            c[t[2]+1][t[1]]-=t[4];
     }
     for(i=0;i<a;i++) {
         for(j=0;j<b;j++) {
