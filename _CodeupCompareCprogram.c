@@ -7,9 +7,14 @@ int main() {
     scanf("%d %d", &n, &m);
     int a[n], b[m], aUb[n+m];
     printf("이제 첫 플레이어의 푼 문제를 오름차순으로 입력해주세요 (마지막엔 0을 입력해주세요) : ");
-    for(i=0, scanf("%d", &a[i]);i<n;scanf("%d", &a[i]), i++);
+    for(i=0;i<n;i++) {
+        scanf("%d", &a[i]);
+    }
     printf("그리고, 두번째 플레이어의 푼 문제를 오름차순으로 입력해주세요 (마지막엔 0을 입력해주세요) : ");
-    for(i=0, scanf("%d", &b[i]);i<m;scanf("%d", &b[i]), i++);
+    for(i=0;i<m;i++) {
+        scanf("%d", &b[i]);
+    }
+    a1=b1=0;
     for(i=0;i<n+m;i++) { 
         if((a1==-1||a[a1]>b[b1])&&b1!=-1) {
             aUb[i]=b[b1];
@@ -30,10 +35,11 @@ int main() {
             else b1=-1;
         }
     }
-    printf("두 사람의 푼 문제들은 다음과 같습니다 : ");
+    printf("두 플레이어가 푼 문제들은 다음과 같습니다 : ");
     for(i=0;i<n+m;i++) { 
         printf("%d ", aUb[i]);
     }
+    printf("\n\n\n둘 다 푼 문제 : ");
     for(i=0;i<n+m;i++, tsum=0) {
         for(j=0;j<n;j++) {
             if(a[j]==aUb[i]) {
@@ -48,6 +54,42 @@ int main() {
             }
         }
         if(tsum==2) {
+            printf("%d ", aUb[i]);
+        }
+    }
+    printf("\n\n\n첫번째 플레이어'만' 푼 문제 : ");
+    for(i=0;i<n+m;i++, tsum=0) {
+        for(j=0;j<n;j++) {
+            if(a[j]==aUb[i]) {
+                tsum++;
+                break;
+            }
+        }
+        for(j=0;j<m;j++) {
+            if(b[j]==aUb[i]) {
+                tsum--;
+                break;
+            }
+        }
+        if(tsum>0) {
+            printf("%d ", aUb[i]);
+        }
+    }
+    printf("\n\n\n두번째 플레이어'만' 푼 문제 : ");
+    for(i=0;i<n+m;i++, tsum=0) {
+        for(j=0;j<m;j++) {
+            if(b[j]==aUb[i]) {
+                tsum++;
+                break;
+            }
+        }
+        for(j=0;j<n;j++) {
+            if(a[j]==aUb[i]) {
+                tsum--;
+                break;
+            }
+        }
+        if(tsum>0) {
             printf("%d ", aUb[i]);
         }
     }
