@@ -1,30 +1,19 @@
 #include <stdio.h>
-#include <math.h>
+#include <string.h>
 int main() {
-    int i, j, n;
-    char t;
+    int n, i, j;
     scanf("%d", &n);
-    long long int a[n][2], b;
+    char a[n][30], t, c[30];
+    int b[n];
+    scanf("%c", &t);
     for(i=0;i<n;i++) {
         j=0;
-        for(scanf("%c", &t);t!=',';j++, scanf("%c", &t)) {
-            if(!j) a[i][0]=(t-64);
-            else a[i][0]+=((t-64)*(long long int)pow(60, j));
-        } 
-        for(;getchar()!=',';);
-        scanf("%lld", &a[i][1]);
-        for(;getchar()!='\n';);
+        for(scanf("%c", &t);t!=',';scanf("%c", &t), j++) a[i][j]=t;
+        a[i][j]='\0';
+        for(j=0;j<2;j++) scanf("%c", &t);
+        scanf("%d", &b[i]);
+        while(getchar()!='\n');
     }
-    j=0;
-    for(;scanf("%c", &t)!=EOF;j++) {
-        if(t=='-') continue;
-        if(!j) b=(t-64);
-        else b+=((t-64)*(long long int)pow(60, j));
-    } 
-    for(i=0;i<n;i++) {
-        printf("%lld %lld", a[i][0], b);
-        if(a[i][0]==b) {
-            printf("%lld", a[i][1]);
-        }
-    }
+    scanf("%s", c);
+    for(i=0;i<n;i++) if(!strcmp(&a[i], c)) printf("%d", b[i]);
 }
